@@ -2,6 +2,7 @@ import postcssPresetEnv from 'postcss-preset-env'
 import postcssEasingGradients from 'postcss-easing-gradients'
 import * as SITE_INFO from './content/site/info.json'
 import { COLOR_MODE_FALLBACK } from './utils/globals.js'
+const config = require('./contentful.json')
 
 export default {
   target: 'static',
@@ -11,11 +12,9 @@ export default {
   },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
-    url:
-      process.env.NODE_ENV === 'production'
-        ? process.env.URL || 'http://createADotEnvFileAndSetURL'
-        : 'http://localhost:3000',
-    lang: SITE_INFO.sitelang || 'en-US'
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_ENVIRONMENT: config.CTF_ENVIRONMENT
   },
   /*
    ** Headers of the page
@@ -96,7 +95,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   },
   /*
    ** Custom additions configuration

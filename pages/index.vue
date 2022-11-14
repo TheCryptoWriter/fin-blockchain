@@ -1,13 +1,37 @@
 <template>
-  <main>
-    <section class="self-center flex flex-col flex-1 items-center justify-center">
-      <h1 class="title text-center">Nuxt — Tailwind — Netlify CMS</h1>
-      <h2 class="subtitle text-center">Boilerplate</h2>
-    </section>
-
-    <section class="mt-8">
-      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">Latest blog post</h3>
-      <posts post-type="blog" :amount="1" />
-    </section>
-  </main>
+  <section class="container">
+    <Navigation />
+    <div class="container__content">
+      <h1>Please select a page you wish to view</h1>
+      <p>This is a website for demo purposes of using Nuxt & Contentful together</p>
+    </div>
+  </section>
 </template>
+
+<script>
+import Navigation from '../components/global/Navigation';
+import { createClient } from '../plugins/contentful';
+
+const contentfulClient = createClient();
+
+export default {
+  components: {
+    Navigation
+  },
+  asyncData({ env }) {
+    return Promise.all([
+      // fetch all blog posts sorted by creation date
+      contentfulClient.getEntries({
+        'content_type': 'page',
+        order: '-sys.createdAt'
+      })
+    ]).then(([pages]) => {
+      // return data that should be available
+      // in the template
+      return {
+        pages: pages.items
+      }
+    }).catch(console.error)
+  }
+}
+</script>
