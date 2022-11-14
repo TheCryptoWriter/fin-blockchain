@@ -29,7 +29,7 @@ export default {
       // return data that should be available
       // in the template
       return {
-        pages: pages.items
+        collections: pages.items
       }
     }).catch(console.error)
   }

@@ -2,7 +2,7 @@
     <div class="navigation">
         <nav>
             <ul role="menu">
-                <li v-for="(navItem, index) in pages" :key="index">
+                <li v-for="(navItem, index) in posts" :key="index">
                     <nuxt-link :to="'/' + navItem.fields.slug.trim()" role="menuitem">{{ navItem.fields.navTitle }}</nuxt-link>
                 </li>
             </ul>
@@ -14,7 +14,7 @@
 export default {
     name: 'Navigation',
     props: {
-        pages: {
+        posts: {
             type: Array, // We expect an array of pages that we need for our navigation
             required: true
         }
