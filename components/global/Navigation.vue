@@ -12,12 +12,10 @@
     
 <script>
 export default {
-    name: 'Navigation',
-    props: {
-        posts: {
-            type: Array,
-            default: () => []
-        }
-    }
+    name: 'Navigation'
 }
 </script>
+
+<style scoped>
+
+</style>
