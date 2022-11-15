@@ -1,9 +1,9 @@
 {
-  "name": "dimon",
+  "name": "FIN BLockchain",
   "version": "1.0.0",
-  "description": "Dimon - Vue Nuxt Software App Landing Page Template",
-  "author": "Layerdrops",
-  "private": true,
+  "description": "FIN BLockchain Blog",
+  "author": "David McNeal",
+  "private": false,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
