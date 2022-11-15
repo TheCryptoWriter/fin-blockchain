@@ -15,8 +15,8 @@ export default {
     name: 'Navigation',
     props: {
         posts: {
-            type: Array, // We expect an array of pages that we need for our navigation
-            required: true
+            type: Array,
+            default: () => []
         }
     }
 }

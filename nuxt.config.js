@@ -1,15 +1,7 @@
-import postcssPresetEnv from 'postcss-preset-env'
-import postcssEasingGradients from 'postcss-easing-gradients'
-import * as SITE_INFO from './content/site/info.json'
-import { COLOR_MODE_FALLBACK } from './utils/globals.js'
 const config = require('./contentful.json')
-
 export default {
   target: 'static',
   components: true,
-  generate: {
-    fallback: true
-  },
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
@@ -17,138 +9,85 @@ export default {
     CTF_ENVIRONMENT: config.CTF_ENVIRONMENT
   },
   /*
-   ** Headers of the page
-   */
+  ** Headers of the page
+  */
   head: {
-    title: SITE_INFO.sitename || process.env.npm_package_name || '',
+    title: process.env.npm_package_name || 'FIN BLockchain Blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: SITE_INFO.sitedescription || process.env.npm_package_description || ''
-      }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || 'Blockchain news updates for financial advisors and other financial service providers.' }
     ],
     link: [
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: true
-      },
-      {
-        rel: 'preload',
-        as: 'style',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
-        media: 'print',
-        onload: `this.media='all'`
-      }
-    ], // ? Imports the font 'Inter', can be optimized by the netlify plugin 'Subfont' by uncommenting it in `netlify.toml`
-    noscript: [
-      {
-        innerHTML:
-          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">'
-      }
+      { rel: 'icon', type: 'image/x-icon', href: 'assets/images/favicons/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: 'assets/images/favicons/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'assets/images/favicons/favicon-96x96.png' },
+      { rel: "stylesheet", href: "assets/css/bootstrap.min.css" },
+      { rel: "stylesheet", href: "assets/css/font-awesome.min.css" },
+      { rel: "stylesheet", href: "assets/css/owl.carousel.min.css" },
+      { rel: "stylesheet", href: "assets/css/magnific-popup.css" },
+      { rel: "stylesheet", href: "assets/css/custom-style.css" },
     ],
-    __dangerouslyDisableSanitizers: ['noscript']
+    script: [
+      { src: "assets/js/jquery.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/bootstrap.bundle.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/select2.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/owl.carousel.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/jquery.magnific-popup.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/jquery.easing.min.js", type: "text/javascript", body: true },
+      { src: "assets/js/custom.js", type: "text/javascript", body: true },
+    ]
   },
   /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#526488' },
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#fff' },
   /*
-   ** Global CSS
-   */
-  css: ['@/assets/css/main.pcss'],
+  ** Global CSS
+  */
+  css: [
+  ],
   /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: ['~/plugins/vue-content-placeholders.js'],
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+  ],
   /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa'],
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [
+  ],
+
   /*
-   ** Nuxt.js modules
-   */
-  modules: ['@nuxt/content', 'nuxt-purgecss'],
-  /*
-   ** Build configuration
-   */
-  build: {
-    extractCSS: true,
-    postcss: {
-      plugins: {
-        'postcss-preset-env': postcssPresetEnv({
-          stage: 1,
-          features: {
-            'nesting-rules': false
-          }
-        }),
-        'postcss-easing-gradients': postcssEasingGradients
-      }
-    },
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) { }
-  },
-  /*
-   ** Custom additions configuration
-   */
-  // ? The content property: https://content.nuxtjs.org/configuration
+  ** Nuxt.js modules
+  */
+  modules: [
+    '@nuxt/content'
+  ],
   content: {
-    dir: 'content'
+    // Options
   },
-  tailwindcss: {
-    viewer: false, // disabled because it causes `Error: Cannot find module 'tailwindcss/resolveConfig'`, fixed in https://github.com/nuxt-community/tailwindcss-module/pull/303
-    cssPath: '~/assets/css/main.pcss',
-    exposeConfig: false // enables `import { theme } from '~tailwind.config'`
+  /*
+  ** optimizedImages
+  */
+  optimizedImages: {
   },
-  purgeCSS: {
-    mode: 'postcss',
-    // ? Safelisting docs: https://purgecss.com/safelisting.html
-    safelist: {
-      // standard: [],
-      deep: [/dark/, /light/, /btn/, /icon/, /main/],
-      greedy: [
-        /^card/,
-        /image$/,
-        /title$/,
-        /^nuxt-content/,
-        /code/,
-        /pre/,
-        /token/,
-        /^vue-content-placeholders/
-      ]
+  generate: {
+    async routes() {
+      const { $content } = require('@nuxt/content')
+      const files = await $content().only(['path']).fetch()
+
+      return files.map(file => file.path === '/index' ? '/' : file.path)
     }
   },
-  colorMode: {
-    classSuffix: '',
-    preference: 'system', // default value of $colorMode.preference
-    fallback: COLOR_MODE_FALLBACK, // fallback value if not system preference found
-    componentName: 'ColorScheme',
-    cookie: {
-      options: {
-        sameSite: 'lax'
-      }
-    }
-  },
-  pwa: {
-    icon: {
-      source: 'static/icon.png',
-      filename: 'icon.png'
-    },
-    manifest: { name: SITE_INFO.sitename || process.env.npm_package_name || '', lang: process.env.lang },
-    meta: {
-      name: SITE_INFO.sitename || process.env.npm_package_name || '',
-      lang: process.env.lang,
-      ogHost: process.env.URL,
-      ogImage: '/preview.jpg'
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
     }
   }
 }
