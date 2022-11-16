@@ -41,7 +41,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#000' },
+  loading: {},
   /*
   ** Global CSS
   */
@@ -50,7 +50,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
+  plugins: ['@plugins/contentful'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -64,14 +64,13 @@ export default {
   modules: [
     '@nuxt/content'
   ],
-  content: {
+  content: [
     // Options
-  },
+  ],
   /*
   ** optimizedImages
   */
-  optimizedImages: {
-  },
+  optimizedImages: [],
   generate: {
     async routes() {
       const { $content } = require('@nuxt/content')

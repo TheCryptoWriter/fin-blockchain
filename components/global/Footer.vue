@@ -46,8 +46,12 @@
   </footer>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: 'Footer'
+}
+</script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
 </style>

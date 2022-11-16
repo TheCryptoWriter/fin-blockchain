@@ -2,18 +2,17 @@
   <div class="wrapper">
     <Header />
     <Banner />
-    <nuxt />
+    <Nuxt />
     <Footer />
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'default',
-
+  layouts: 'default',
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
 </style>

@@ -6,10 +6,10 @@
       </a>
       <ul class="navbar-nav">
         <li class="nav-item m-4">
-          <a class="nav-link topnav" href="/blog">Blog</a>
+          <a class="nav-link topnav" href="/">Home</a>
         </li>
         <li class="nav-item m-4">
-          <a class="nav-link topnav" href="/">Home</a>
+          <a class="nav-link topnav" href="/blog">Blog</a>
         </li>
       </ul>
     </nav>

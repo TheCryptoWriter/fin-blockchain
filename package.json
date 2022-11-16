@@ -1,9 +1,9 @@
 {
-  "name": "FIN BLockchain",
+  "name": "finblockchain",
   "version": "1.0.0",
   "description": "FIN BLockchain Blog",
   "author": "David McNeal",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -13,7 +13,9 @@
   "dependencies": {
     "@nuxt/content": "^1.15.1",
     "contentful": "^9.2.11",
-    "core-js": "^3.26.1",
-    "nuxt": "^2.15.0"
+    "nuxt": "^2.15.1"
+  },
+  "devDependencies": {
+    "core-js": "^3.26.1"
   }
 }
