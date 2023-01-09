@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.15.1",
-    "contentful": "^9.2.11",
+    "contentful": "^9.2.15",
     "nuxt": "^2.15.1"
   },
   "devDependencies": {
