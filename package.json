@@ -16,6 +16,6 @@
     "nuxt": "^2.15.1"
   },
   "devDependencies": {
-    "core-js": "^3.26.1"
+    "core-js": "^3.28.0"
   }
 }
